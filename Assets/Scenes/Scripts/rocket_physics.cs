@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;  // namespaces
+using UnityStandardAssets.CrossPlatformInput;
 
 public class rocket_physics : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class rocket_physics : MonoBehaviour
     int sceneID;
     private bool collisionsEnabled = true;
     private int levelCount;
+    float xThrow;
 
     [SerializeField] float rcsThrust = 10f;
     [SerializeField] float mainThrust = 10f;
@@ -46,13 +49,22 @@ public class rocket_physics : MonoBehaviour
         if (currentState == State.Alive)
         {
             Thrust();
-            Rotation();
+            //Rotation();
+            NewRotation();
             UpwardForce();
         }
         if (Debug.isDebugBuild)
         {
             EnterDebugMode();
         }
+    }
+
+    private void NewRotation()
+    {
+        float rotationThisFrame = rcsThrust * Time.deltaTime;
+        xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
+        transform.Rotate(-Vector3.forward * rotationThisFrame * xThrow);
+
     }
 
     void Rotation()
@@ -84,7 +96,7 @@ public class rocket_physics : MonoBehaviour
 
     void Thrust()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (CrossPlatformInputManager.GetButton("Fire"))
         {
             rigidBody.AddRelativeForce(Vector3.up * mainThrust);
             Thrustsfx();
@@ -142,7 +154,15 @@ public class rocket_physics : MonoBehaviour
                     successParticles.Play();
                     Invoke("LoadNextScene", loadDelay);
                     break;
-                case "Dead":
+                case "Dead":  //same as enemy
+                    audioSource.Stop();
+                    deathParticles.Play();
+                    mainEngineParticles.Stop();
+                    currentState = State.Dying;
+                    Invoke("RestartScene", loadDelay);
+                    audioSource.PlayOneShot(death);
+                    break;
+                case "Enemy": // same as dead
                     audioSource.Stop();
                     deathParticles.Play();
                     mainEngineParticles.Stop();
@@ -169,5 +189,9 @@ public class rocket_physics : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
+    }
+    State GetCurrentState()
+    {
+        return currentState;
     }
 }

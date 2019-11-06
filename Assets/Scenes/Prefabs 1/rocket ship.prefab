@@ -383,9 +383,10 @@ GameObject:
   - component: {fileID: 6098677601171025635}
   - component: {fileID: 7409525850796415901}
   - component: {fileID: 1344102016953099527}
+  - component: {fileID: 3671530618066285427}
   m_Layer: 0
   m_Name: rocket ship
-  m_TagString: Dead
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,6 +556,18 @@ MonoBehaviour:
   deathVolume: 1
   mainEngineParticles: {fileID: 198100718002464798}
   deathParticles: {fileID: 198204747638844612}
+--- !u!114 &3671530618066285427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3103860587038716408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4f1f3281f8134ea59c81658886ea295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3112442353786651951
 GameObject:
   m_ObjectHideFlags: 0

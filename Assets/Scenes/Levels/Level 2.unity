@@ -352,7 +352,7 @@ PrefabInstance:
     - target: {fileID: 8854821417318939295, guid: 30932d5b0bf7a4613b8229f15db856f6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.8
+      value: 33.9
       objectReference: {fileID: 0}
     - target: {fileID: 8854821417318939295, guid: 30932d5b0bf7a4613b8229f15db856f6,
         type: 3}
@@ -402,7 +402,7 @@ PrefabInstance:
     - target: {fileID: 8854821417318939295, guid: 30932d5b0bf7a4613b8229f15db856f6,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: -1.4135875
+      value: -18.830273
       objectReference: {fileID: 0}
     - target: {fileID: 8854821417318939295, guid: 30932d5b0bf7a4613b8229f15db856f6,
         type: 3}
@@ -1893,8 +1893,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 638753765}
-  smoothspeed: 0.125
-  offset: {x: 0, y: 2, z: -15}
+  smoothspeed: 0.25
+  offset: {x: 0, y: 1, z: -30}
 --- !u!1 &1704303332
 GameObject:
   m_ObjectHideFlags: 0
@@ -2241,6 +2241,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6718634725688051927, guid: e36b3e316b15e47838b7e93bfcb30d77,
+        type: 3}
+      propertyPath: rcsThrust
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e36b3e316b15e47838b7e93bfcb30d77, type: 3}
 --- !u!1 &2029826606 stripped
@@ -2513,8 +2518,13 @@ PrefabInstance:
     - target: {fileID: 1155291273293502080, guid: d52e2ea2be65145b2879c685420e4752,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 30
+      value: 87.678
       objectReference: {fileID: 0}
+    - target: {fileID: 3775102042145762260, guid: d52e2ea2be65145b2879c685420e4752,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f99534c8aeb478a4c80bbbd01fba93a1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d52e2ea2be65145b2879c685420e4752, type: 3}
 --- !u!1001 &2047584264618753397

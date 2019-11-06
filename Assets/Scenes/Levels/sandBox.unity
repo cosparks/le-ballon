@@ -305,12 +305,6 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!198 &314511189 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198100718002464798, guid: 8fedae8dd29664b989b7e465f9432a8c,
-    type: 3}
-  m_PrefabInstance: {fileID: 855332443}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &390182220
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -599,6 +593,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: rocketTarget
+      value: 
+      objectReference: {fileID: 507639822}
+    - target: {fileID: 0}
+      propertyPath: mainEngineParticles
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deathParticles
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: mainEngine
+      value: 
+      objectReference: {fileID: 8300000, guid: 5385186778d4d45b18545ba8eb7b0bb2, type: 3}
+    - target: {fileID: 0}
+      propertyPath: rotationThrust
+      value: 400
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: engineThrust
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103860587038716408, guid: 8fedae8dd29664b989b7e465f9432a8c,
+        type: 3}
+      propertyPath: m_Name
+      value: atack
+      objectReference: {fileID: 0}
     - target: {fileID: -1839339393727146900, guid: 8fedae8dd29664b989b7e465f9432a8c,
         type: 3}
       propertyPath: mainEngine
@@ -617,46 +640,17 @@ PrefabInstance:
     - target: {fileID: -1839339393727146900, guid: 8fedae8dd29664b989b7e465f9432a8c,
         type: 3}
       propertyPath: rotationThrust
-      value: 400
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: -1839339393727146900, guid: 8fedae8dd29664b989b7e465f9432a8c,
         type: 3}
       propertyPath: engineThrust
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -1839339393727146900, guid: 8fedae8dd29664b989b7e465f9432a8c,
         type: 3}
       propertyPath: attackDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: rocketTarget
-      value: 
-      objectReference: {fileID: 507639822}
-    - target: {fileID: 0}
-      propertyPath: mainEngineParticles
-      value: 
-      objectReference: {fileID: 314511189}
-    - target: {fileID: 0}
-      propertyPath: deathParticles
-      value: 
-      objectReference: {fileID: 1501485228}
-    - target: {fileID: 0}
-      propertyPath: mainEngine
-      value: 
-      objectReference: {fileID: 8300000, guid: 5385186778d4d45b18545ba8eb7b0bb2, type: 3}
-    - target: {fileID: 0}
-      propertyPath: rotationThrust
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: engineThrust
       value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 3103860587038716408, guid: 8fedae8dd29664b989b7e465f9432a8c,
-        type: 3}
-      propertyPath: m_Name
-      value: atack
       objectReference: {fileID: 0}
     - target: {fileID: 5160719314450009532, guid: 8fedae8dd29664b989b7e465f9432a8c,
         type: 3}
@@ -732,6 +726,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Drag
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409525850796415901, guid: 8fedae8dd29664b989b7e465f9432a8c,
+        type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7409525850796415901, guid: 8fedae8dd29664b989b7e465f9432a8c,
+        type: 3}
+      propertyPath: BypassReverbZones
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -969,12 +973,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1268894024623710908, guid: 43ba44ddf1d494173aa97bb9eb354baf,
     type: 3}
   m_PrefabInstance: {fileID: 763383452}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1501485228 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 198204747638844612, guid: 8fedae8dd29664b989b7e465f9432a8c,
-    type: 3}
-  m_PrefabInstance: {fileID: 855332443}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1656483701
 GameObject:
@@ -1246,7 +1244,7 @@ PrefabInstance:
     - target: {fileID: 6718634725688051927, guid: e36b3e316b15e47838b7e93bfcb30d77,
         type: 3}
       propertyPath: rcsThrust
-      value: 250
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e36b3e316b15e47838b7e93bfcb30d77, type: 3}

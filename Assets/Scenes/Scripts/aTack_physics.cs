@@ -9,7 +9,7 @@ public class aTack_physics : MonoBehaviour
     private AudioSource audioSource;
     private bool playSFX;
     private bool playDeathSFX;
-    private bool attackDanceComplete = false;
+    private bool attackDanceComplete;
 
     const float tau = Mathf.PI * 2;
     private Vector3 startPosition;
@@ -31,8 +31,7 @@ public class aTack_physics : MonoBehaviour
     [SerializeField] AudioClip death;
     [Range(0, 1)] [SerializeField] float deathVolume = 1f;
 
-    enum State { Alive, Dead }
-    State currentState = State.Alive;
+    public bool isDead;
 
     void Start()
     {
@@ -42,23 +41,24 @@ public class aTack_physics : MonoBehaviour
         playSFX = false;
         playDeathSFX = false;
         startPosition = transform.position;
+        isDead = false;
     }
 
     void FixedUpdate()
     {
-        if (attackDistance >= Vector3.Distance(rocketTarget.position, transform.position) && currentState == State.Alive)
+        if (attackDistance >= Vector3.Distance(rocketTarget.position, transform.position) && isDead == false)
         {
             // AttackDance();
             TargetPlayer();
             AttackTarget();
         }
-        else if (currentState == State.Dead && playDeathSFX == false)
+        else if (isDead == true && playDeathSFX == false)
         {
             rigidBody.useGravity = true;
             audioSource.PlayOneShot(death, deathVolume);
             playDeathSFX = true;
         }
-        else if (currentState == State.Alive)
+        else if (isDead == false)
         {
             audioSource.Stop();
             playSFX = false;
@@ -116,21 +116,28 @@ public class aTack_physics : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (currentState != State.Alive) { return; }
+        if (isDead == true) { return; }
 
         switch (collision.gameObject.tag)
         {
             case "Dead":
                 audioSource.Stop();
-                currentState = State.Dead;
+                isDead = true;
                 break;
-
+            case "Enemy":
+                audioSource.Stop();
+                isDead = true;
+                break;
             case "Target":
                 audioSource.Stop();
-                currentState = State.Dead;
+                isDead = true;
                 break;
 
         }
+    }
+    public bool IsTackDead()
+    {
+        return isDead;
     }
 }
 

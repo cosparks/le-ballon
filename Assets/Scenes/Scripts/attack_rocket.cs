@@ -23,8 +23,7 @@ public class attack_rocket : MonoBehaviour
     [SerializeField] ParticleSystem mainEngineParticles;
     [SerializeField] ParticleSystem deathParticles;
 
-    enum State { Alive, Dead }
-    State currentState = State.Alive;
+    bool isDead;
 
     void Start()
     {
@@ -33,21 +32,22 @@ public class attack_rocket : MonoBehaviour
         rigidBody.useGravity = false;
         playSFX = false;
         playDeathSFX = false;
-}
+        isDead = false;
+    }
 
     void FixedUpdate()
     {
-        if (attackDistance >= Vector3.Distance(rocketTarget.position, transform.position) && currentState == State.Alive)
+        if (attackDistance >= Vector3.Distance(rocketTarget.position, transform.position) && isDead == false)
         {
             TargetPlayer();
             AttackTarget();
         }
-        else if (currentState == State.Dead && playDeathSFX == false)
+        else if (isDead == true && playDeathSFX == false)
         {
             audioSource.PlayOneShot(death, deathVolume);
             playDeathSFX = true;
         }
-        else if (currentState == State.Alive)
+        else if (isDead == false)
         {
             playSFX = false;
             audioSource.Stop();
@@ -93,24 +93,34 @@ public class attack_rocket : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (currentState != State.Alive) { return; }
+        if (isDead == true) { return; }
 
         switch (collision.gameObject.tag)
         {
             case "Dead":
-                audioSource.Stop();
-                deathParticles.Play();
-                mainEngineParticles.Stop();
-                currentState = State.Dead;
+                KillRocket();
                 break;
-
             case "Target":
-                audioSource.Stop();
-                deathParticles.Play();
-                mainEngineParticles.Stop();
-                currentState = State.Dead;
+                KillRocket();
+                break;
+            case "Enemy":
+                KillRocket();
                 break;
 
         }
+    }
+
+    private void KillRocket()
+    {
+        rigidBody.useGravity = true;
+        audioSource.Stop();
+        deathParticles.Play();
+        mainEngineParticles.Stop();
+        isDead = true;
+    }
+
+    public bool IsRocketDead()
+    {
+        return isDead;
     }
 }

@@ -4212,7 +4212,7 @@ PrefabInstance:
     - target: {fileID: 6718634725688051927, guid: e36b3e316b15e47838b7e93bfcb30d77,
         type: 3}
       propertyPath: rcsThrust
-      value: 250
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 198100718002464798, guid: e36b3e316b15e47838b7e93bfcb30d77,
         type: 3}
