@@ -10,10 +10,9 @@ public class ProjectileLauncher : MonoBehaviour
     LightningBoltScript animatedLightning;
     GameObject[] enemies;           //create array of all targets
     GameObject closestTarget;       //closest enemy --> sent to LightningBolt script
-    Transform closestTack;
 
 
-    [Header("Game Objects")]
+    [Header("Game Object")]
     [SerializeField] GameObject lightningCollider;
     [SerializeField] Transform spawnedAtRuntime;
 
@@ -23,6 +22,7 @@ public class ProjectileLauncher : MonoBehaviour
     [Tooltip("Number of frames that lightning can be active before cooldown")] [SerializeField] int frameLimit = 100;
     [Tooltip("Determines how long lightning animation will be active")] [SerializeField] float animationLength = 0.4f;
     [Tooltip("Number of seconds before lightning can be used again")] [SerializeField] float coolDown = 2f;
+    [Tooltip("Number of seconds before lightning powerup wears off")] [SerializeField] float powerupTimeLimit = 10f;
     [SerializeField] bool hilariousBug; // activates hilarious bug
     float attackTime;
     bool attackCalled;
@@ -40,6 +40,7 @@ public class ProjectileLauncher : MonoBehaviour
         if (CrossPlatformInputManager.GetButton("Shock"))
         {
             GetClosestEnemy(enemies);
+
             if (!hilariousBug)
             {
                 LightningAttack();
@@ -66,7 +67,7 @@ public class ProjectileLauncher : MonoBehaviour
             Enemy enemyScript = baddy.GetComponent<Enemy>();
             if (!hilariousBug)
             {
-                if (dist < minDist && enemyScript.IsEnemyDead() == false)
+                if (dist < minDist && enemyScript.IsEnemyDeadDelayed() == false)
                 {
                     closestTarget = baddy;
                     minDist = dist;
@@ -139,6 +140,11 @@ public class ProjectileLauncher : MonoBehaviour
     public float GetAnimationLength()
     {
         return animationLength;
+    }
+
+    public float GetPowerupTime()
+    {
+        return powerupTimeLimit;
     }
 
     // extra-buggy lightning attack just for fun :)

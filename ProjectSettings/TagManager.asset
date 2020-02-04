@@ -9,6 +9,7 @@ TagManager:
   - Music
   - Target
   - Enemy
+  - Powerup
   layers:
   - Default
   - TransparentFX
