@@ -6,6 +6,6 @@ Imaginative and whimsical physics-based game where you play as a balloon trying 
 
 ### About
 
-All levels are procedurally generated using cellular automata to create the rooms and pathways of the maze, and marching squares to create the wall mesh.  Player start and end locations are chosen using a search algorithm which locates the center of the largest rooms in a particular quadrant (which a level designer can choose).  One can also procedurally instantiate from 0-4 enemies (flying tacks) and equally many moving obstacles to different sectors of a level.
+All levels are procedurally generated using cellular automata to create the rooms and pathways of the maze, and marching squares to create the wall mesh.  Player start and end locations are chosen using a search algorithm which locates the center of the largest rooms in a particular quadrant (which a level designer can choose).  One can also procedurally instantiate from 0-4 enemies (flying tacks) and equally many moving obstacles to different sectors of a level (sectors are split into a 3x3 grid of the level, but this can easily be modified for larger/smaller levels).
 
 ![firstlevel](https://github.com/cosparks/le_ballon/blob/43e9df346e549bee1085ef6edda86f557a9e341b/docs/InGame1.png)
